@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'Gilroy';
+    src: url('https://fonts.googleapis.com/css2?family=Gilroy&display=swap');
+    font-weight: bold; /* Optionally specify the font weight */
+    font-style: normal; /* Optionally specify the font style */
+  }
+  
+  .font-gilroy-bold {
+    font-family: 'Gilroy', sans-serif; /* Apply Gilroy-Bold font */
+  }
+  

@@ -1,0 +1,829 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Create Event - Eventful.ng</title>
+	<!-- Global stylesheets -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="https://tickethub.ng/assets/app/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="https://tickethub.ng/assets/app/css/icons/fontawesome/styles.min.css" rel="stylesheet" type="text/css">
+	<link href="https://tickethub.ng/assets/app/css/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="https://tickethub.ng/assets/app/css/core.css" rel="stylesheet" type="text/css">
+	<link href="https://tickethub.ng/assets/app/css/components.css" rel="stylesheet" type="text/css">
+	<link href="https://tickethub.ng/assets/app/css/colors.css" rel="stylesheet" type="text/css">
+	<link href="https://tickethub.ng/assets/app/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+	<link href="https://tickethub.ng/assets/app/plugins/select2/select2.min.css" rel="stylesheet">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/eventfulFavicon_196by196.png"/>
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/eventfulFavicon_196by196.png"/>
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/eventfulFavicon_196by196.png"/>
+	<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/eventfulFavicon_196by196.png"/>
+	<link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/eventfulFavicon_196by196.png"/>
+	<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/eventfulFavicon_196by196.png"/>
+	<link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/eventfulFavicon_196by196.png"/>
+	<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/eventfulFavicon_196by196.png"/>
+	<link rel="icon" type="image/png" href="/images/eventfulFavicon_196by196.png" sizes="196x196"/>
+	<link rel="icon" type="image/png" href="/images/eventfulFavicon_96by96.png" sizes="96x96"/>
+	<link rel="icon" type="image/png" href="/images/eventfulFavicon_128by128.png" sizes="32x32"/>
+	<link rel="icon" type="image/png" href="/images/eventfulFavicon_32by32.png" sizes="16x16"/>
+	<link rel="icon" type="image/png" href="/images/eventfulFavicon_128by128.png" sizes="128x128"/>
+	<meta name="application-name" content="Eventful.ng"/>
+	<meta name="msapplication-TileColor" content="#46d9ac" />
+	<meta name="msapplication-TileImage" content="/images/eventfulFavicon_128by128.png"/>
+	<meta name="msapplication-square70x70logo" content="/images/eventfulFavicon_128by128.png"/>
+	<meta name="msapplication-square150x150logo" content="/images/eventfulFavicon_128by128.png"/>
+	<meta name="msapplication-wide310x150logo" content="/images/eventfulFavicon_128by128.png"/>
+	<meta name="msapplication-square310x310logo" content="/images/eventfulFavicon_128by128.png"/>
+	<link rel="manifest" href="https://tickethub.ng/assets/favicon/manifest.json">
+	<meta name="theme-color" content="#FF5A19">
+	<link rel="manifest" href="https://tickethub.ng/manifest.json" />
+	
+	<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+	<script>
+	  var OneSignal = window.OneSignal || [];
+	  OneSignal.push(function() {
+	    OneSignal.init({
+	      appId: "",
+	    });
+	  });
+	</script>
+	<!-- /global stylesheets -->
+
+
+	<!-- A few select2 styling hacks -->
+	<style type="text/css">
+	/* Assign min-width to container */
+    .select2-container{
+        min-width:200px;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__arrow b
+    {
+        border-color: #000 transparent transparent transparent;
+        top: 60%;
+    }
+    .select2-selection--single .select2-selection__arrow:after {
+	    top: 50%;
+	    right: 12px;
+	    margin-top: -4px;
+	}
+	.select2-selection--single .select2-selection__clear {
+	   	margin-top: 4px;
+	}
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+	    height: 26px;
+	    position: absolute;
+	    top: 1px;
+	    right: 1px;
+	    width: 20px;
+	}
+    .select2-search input {
+        height: 30px !important;
+        border: 2px solid #e5e6e7;
+    }
+    .select2-container-multi .select2-choices {
+        height: auto !important;
+        height: 1%;
+        border: 2px solid #e5e6e7;
+    }
+    .select2-container--default .select2-selection--single .select2-selection__rendered{
+        line-height:23px;
+    }
+    .select2-container .select2-selection--single{
+        height:36px;
+    }
+    .btn-thn {
+    	min-width: 120px !important;
+    }
+	</style>
+<!-- Other CSS and page css goes here -->
+
+<style type="text/css">
+	#map {
+        height: 100%;
+    }
+</style>
+</head>
+
+<body class="sidebar-opposite-visible">
+	<!-- Main navbar -->
+		<div class="navbar navbar-default navbar-fixed-top header-highlight">
+		<div class="navbar-header">
+			<a class="text-center" href="/"><img src="/images/eventfulLogo_16by16.png" style="width:250px; height:46px; padding-left:6px; margin:5px;" alt=""></a>
+			<ul class="nav navbar-nav visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+				<li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+			</ul>
+		</div>
+
+		<div class="navbar-collapse collapse" id="navbar-mobile">
+			<ul class="nav navbar-nav">
+				<li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+				<li><a href="/views/dashboard">Dashboard</a></li>
+				<li><a class="sidebar-control sidebar-opposite-toggle hidden-xs"><i class="icon-indent-decrease2"></i></a></li>
+			</ul>
+
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown dropdown-user">
+					<a class="dropdown-toggle" data-toggle="dropdown"><img src="/images/userAvatar.png" class="img-circle img-sm" alt="My profile Picture">
+						<span></span><i class="caret"></i></a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li><a href="/views/dashboard"><i class="icon-user-plus"></i> My profile</a></li>
+						<li><a href="/views/dashboard"><i class="icon-coins"></i> My balance (₦0.00)</a></li>
+						<li class="divider"></li>
+						<li><a href="/"><i class="icon-cog5"></i> Account settings</a></li>
+						<li><a href="/"><i class="icon-switch2"></i> Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="hidden-xs" style="height: 50px; width: 100%">&nbsp;</div>
+	<!-- /main navbar -->
+
+	<!-- Page container -->
+	<div class="page-container">
+	<!-- Page content -->
+	<div class="page-content">
+	<!-- Main sidebar -->
+		<div class="sidebar sidebar-main sidebar-fixed">
+		<div class="sidebar-content">
+		<!-- User menu -->
+		<div class="sidebar-user">
+		<div class="category-content">
+		<div class="media"><a href="#" class="media-left"><img src="/images/userAvatar.png" class="img-circle img-sm" alt="My profile Picture"></a>
+		<div class="media-body"><span class="media-heading text-semibold"></span>
+		<div class="text-size-mini text-muted"><i class="icon-envelop3 text-size-small"></i></div>
+		</div>
+		</div>
+		</div>
+		</div>
+		<!-- /user menu -->
+		<!-- Main navigation -->
+
+		<div class="sidebar-category sidebar-category-visible">
+			<div class="category-content no-padding">
+				<ul class="navigation navigation-main navigation-accordion">
+				<!-- Main -->
+				<li class="navigation-header"><span>Menu</span> <i class="icon-menu" title="Menu pages"></i></li>
+				<li ><a href="/views/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+				<li class="active" ><a href="/views/registerevents"><i class="icon-ticket"></i> <span>Create New Event</span></a></li>	
+				<li><a href="/views/events"><i class="icon-stack"></i><span>My Events</span></a>
+				<ul>
+					<li><a href="/views/events">Manage Events</a></li>
+					<li><a href="/views/events">Sales Report</a></li>
+					<li><a href="/views/events">Ticket Report</a></li>
+				</ul>
+				</li>
+
+				<li><a href="/"><i class="icon-user"></i> <span>My Account</span></a>
+					<ul>
+						<li  ><a href="/views/loginuser">My Profile</a></li>
+						<li  ><a href="/views/loginuser">Change Password</a></li>										
+					</ul>
+				</li>
+				<!-- /main -->
+				<li><a href="/views/logout"><i class="icon-key"></i> Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /main sidebar -->
+
+<!-- Main content -->
+<div class="content-wrapper">
+<!-- Content area -->
+<div class="content">
+	<form method="post" class="create_event" enctype="multipart/form-data" action="/views/registerevents">
+	<div class="panel panel-flat">
+	<div class="panel-heading"><h6 class="form-wizard-title text-semibold"><span class="form-wizard-count">1</span>Event info<small class="display-block">Tell us a bit about your event</small></h6>
+	<div class="heading-elements">
+		<ul class="icons-list">
+			<li><a data-action="collapse"></a></li>
+		</ul>
+	</div>
+	</div>
+
+	<div class="panel-body">
+		<div class="collapse in" id="demo1">
+			<div class="form-group">
+				<label>Event Title:</label><span class="text text-info" data-popup="tooltip" title="Make your event title clear and concise, not more than 75 characters.">Tip</span>
+				<input type="text" name="eventTitle" class="form-control" value="" required="" placeholder="Type in your event name...">
+			</div>
+			<div class="form-group event_location">
+				<label>Venue Name:</label><span class="text text-info" data-popup="tooltip" title="The building name eg. Sheraton Hotel or platform name eg. Skype, Slack etc.">Tip</span>
+				<input type="text" name="eventVenue" required="" class="form-control" value="" placeholder="Where will your event happen?">
+				<span class="text-semibold"><a href="#" class="evt_set_online"><i class="fa fa-desktop"></i>Change to Online Event</a></span>
+				<span class="text-semibold" style="display: none;"><a href="#" class="evt_set_location"><i class="fa fa-map-marker"></i>Set Location</a></span>
+			</div>
+			<div class="form-group event_address">
+				<label>Venue Address:</label><span class="text text-info" data-popup="tooltip" title="Giving a clear and direct address will help your attendees locate your event at ease">Tip</span>
+				<input type="text" name="eventAddress" required="" class="form-control" value="" placeholder="Set a venue address for your event">
+			</div>
+			<div class="row">
+			<div class="col-md-6"><label>Starts</label>
+			<div class="row">
+				<div class="col-md-6">
+				<div class="input-group"><span class="input-group-addon"><i class="icon-calendar5"></i></span>
+				<input type="text" name="eventStartDate" class="form-control pickadate" placeholder="Start Date&hellip;" required>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="input-group"><span class="input-group-addon"><i class="icon-alarm"></i></span>
+				<input type="text" name="eventStartTime" class="form-control pickatime" placeholder="Set start time&hellip;" required>
+				</div>
+			</div>
+			</div>
+			</div>
+			<div class="col-md-6"><label>Ends</label>
+			<div class="row">
+			<div class="col-md-6">
+			<div class="input-group"><span class="input-group-addon"><i class="icon-calendar5"></i></span>
+
+			<input type="text" name="eventEndDate" class="form-control pickadate" placeholder="End Date&hellip;" required>
+			</div>
+			</div>
+			<div class="col-md-6">
+			<div class="input-group"><span class="input-group-addon"><i class="icon-alarm"></i></span>
+			<input type="text" name="eventEndTime" class="form-control pickatime" placeholder="Set end time&hellip;" required>
+			</div>
+			</div>
+			</div>
+			</div>
+		</div> 
+		<!-- row -->
+			
+	<br>
+	<div class="form-group">
+	<label class="control-label">Event Image:</label><span class="text text-info" data-popup="tooltip" title="Use a very compelling image to get more attention.">Tip</span>
+		<input type="file" class="file-input-advanced uploader" data-show-upload="false" name="eventImage" accept=".gif, .jpg, .jpeg, .JPEG, .png, .bmp">
+		<span class="help-block">Upload a compelling image. We recommend using at least a 2160x1080px (2:1 ratio) image that's no larger than <code>10MB</code></span>
+	</div>
+			
+	<br />
+	<div class="form-group">
+	<label>Event Description:</label><span class="text text-info" data-popup="tooltip" title="Add a clear event description, you could also add FAQs."> Tip</span>
+		<textarea name="eventDescription" cols="18" rows="10" class="wysihtml5 wysihtml5-min form-control" value="" placeholder="Enter your event details here, you can also add F.A.Q, your invitees, and what your attendees should expect from your event..."></textarea>
+	</div>
+	</div><!-- collapse in -->
+	</div><!-- panel-body -->
+	</div> <!-- panel panel-flat -->
+
+	<div class="panel panel-flat">
+		<div class="panel-heading">
+		<h6 class="form-wizard-title text-semibold"><span class="form-wizard-count">2</span>Create Tickets<small class="display-block">Create ticket type(s) for this event</small></h6>
+			<div class="heading-elements">
+				<ul class="icons-list">
+				    <li><a data-action="collapse"></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="panel-body">
+		<div class="table-responsive">
+			<table class="table table-striped table-framed ticket_table" style="display: none;">
+				<thead>
+					<tr>
+						<th>Ticket Name</th>
+						<th>Quantity Available</th>
+						<th>Price</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<h3 class="text-center text-size-large text-black">Choose a ticket type to start with. Default (Free - Unlimited)</h3>
+		<div class="col-lg-10 col-lg-offeset-1 col-md-10 col-md-offset-1">							
+		<div class="btn-group btn-group-justified">									
+		<!-- <a class="btn btn-primary btn-rounded"><i class="icon-help position-left visible-md visible-lg"></i> RSVP</a> -->
+			<a class="btn btn-primary btn-rounded ticket_add" data-ticket-type="free"><i class="icon-add position-left visible-md visible-lg"></i>FREE<span class="hidden-xs">TICKET</span></a>
+			<a class="btn btn-info btn-rounded ticket_add" data-ticket-type="paid"><i class="icon-add position-left visible-md visible-lg"></i>PAID<span class="hidden-xs">TICKET</span></a>
+		</div>
+		</div>
+		<div class="form-group event_createTickets">
+			<input type="text" name="ticketName" required="" class="form-control" value="" placeholder="Enter The Ticket Name">
+			<input type="text" name="ticketAvailableQty" required="" class="form-control" value="" placeholder="Set The Quantity Available For This Show">
+			<input type="text" name="ticketPrice" required="" class="form-control" value="" placeholder="Set an Amount">
+		</div>
+	</div><!-- panel-body -->
+						
+		</div> <!-- panel panel-flat -->
+
+		<div class="panel panel-flat">
+		<div class="panel-heading">
+			<h6 class="form-wizard-title text-semibold"><span class="form-wizard-count">3</span>Additional Information<small class="display-block">Tell us a little bit more about your event?</small></h6>
+			<div class="heading-elements">
+				<ul class="icons-list">
+				    <li><a data-action="collapse"></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="panel-body">
+		<div class="form-group">
+			<input type="hidden"   name="showTicketsremaining" value="no">
+			<input type="checkbox" name="showTicketsremaining" value="yes"><strong> Show Remaining Tickets</strong><span>: Show the number of remaining tickets on your events.</span>
+		</div>
+		<div class="form-group">
+			<input type="hidden" value="no" name="organizerDetails">
+			<input type="checkbox" value="yes" name="organizerDetails"><strong> Show Organizer Details</strong><span>: Show the details of the organizer on your events.</span>
+		</div>
+		<div class="form-group">
+			<input type="hidden" value="no" name="ticketActivateComments">
+			<input type="checkbox" value="yes" name="ticketActivateComments"><strong> Activate Comments</strong><span>: Allow users to comment on your event.</span>
+		</div>
+
+		<h4>Event Listing Privacy</h4>
+		<div class="form-group">
+		<label for="public">
+			<input type="radio" name="ticketlistingPrivacy" value="public" checked><strong> Public Event</strong><span>: Your event can be found by anyone on our site, our promotion partners, and search engines..</span>
+		</label>
+		</div>
+		
+		<div class="form-group">
+		<label for="private">
+			<input type="radio" name="ticketlistingPrivacy" value="private"><strong> Private Event</strong><span>: Only accessible by people you specify</span>
+		</label>
+		</div>
+								
+		<div class="row">
+		<div class="col-md-6">
+		<div class="form-group evt_public">
+			<label>Event Category</label>
+				<select class="form-control event_category" name="eventCategory">
+			        <option value="">Select a Category</option>
+			        <option value="Arts And Entertainment">Arts And Entertainment</option>
+					<option value=" Business And Networking"> Business And Networking</option>
+					<option value=" Charities And Non-profit"> Charities And Non-profit</option>
+					<option value=" Education And Student Groups"> Education And Student Groups</option>
+					<option value=" Family or School Reunions"> Family or School Reunions</option>
+					<option value=" Health And Wellness"> Health And Wellness</option>
+					<option value=" Museums And Cultural"> Museums And Cultural</option>
+					<option value=" Music"> Music</option>
+					<option value=" Outdoor And Recreational"> Outdoor And Recreational</option>
+					<option value=" Public Action And Political"> Public Action And Political</option>
+					<option value=" Religion And Spirituality"> Religion And Spirituality</option>
+					<option value=" Social Events And Clubs"> Social Events And Clubs</option>
+					<option value=" Sports And Fitness"> Sports And Fitness</option>
+			    </select>
+		</div>
+
+		<div class="form-group evt_private" style="display: none;">
+			<label for="link_invite">
+				<input type="radio" name="eventLinkInvite" value="link_only" checked><strong> Link Invite</strong><span>: Anyone who has your event link</span>
+			</label>
+
+			<label for="email_invite">
+				<input type="radio" name="eventLinkInvite" value="email_only"><strong> Email Invite</strong><span>: Only people you send a unique invitation</span><span class="text text-info" data-popup="tooltip" title="You will need to send private mails to get attendees on this. Go to Invite & Promotion menu"> Tip</span>
+			</label>
+		</div>
+
+		<div class="checkbox checkbox-switchery switchery-xs">
+			<label>
+			<input type="checkbox" name="eventCreateTerms" class="switchery" value="yes" required="required">Accept our <a href="#" target="_blank">terms</a>
+			</label>
+		</div>
+		</div>
+
+		<div class="col-md-6">
+		<div class="form-group">
+			<label>Fees Settings</label>
+			<select class="form-control fee_settings" name="eventFeesSettings">
+			    <option value="absorb">Absorb Fees</option>
+			    <option value="pass">Pass On</option>
+			</select>
+			<span class="help-block">Please specify if transaction fees would be passed on to buyers or charged from your account. We charge <code>3.5% + N200</code>.</span>
+		</div>
+		</div>
+		</div>
+
+		<div class="row text-center">
+		<div class="col-md-12">
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary btn-xlg"><i class="icon-cloud-check2 position-left"></i> POST YOUR EVENT</button>
+		</div>
+		</div>
+		</div>
+
+		</div><!-- panel-body -->
+		</div> <!-- panel panel-flat -->
+		</form>
+
+		<!-- Footer -->
+		<div class="footer text-muted">&copy; 2024. <a href="/">Eventful.ng</a></div>
+		<!-- /footer -->
+	</div>
+		<!-- /content area -->
+</div>
+<!-- /main content -->
+
+<!-- Opposite sidebar -->
+						<div class="sidebar sidebar-opposite sidebar-default sidebar-fixed hidden-sm">
+				        <div class="sidebar-content" style="background: url('https://tickethub.ng/assets/tickethub_side_banner.jpg') center no-repeat;">
+						<img src="" style="width: 100%;">
+
+					<!-- Sidebar search -->
+					<div class="sidebar-category">
+						<!-- <div class="category-title">
+							<span>Search</span>
+							<ul class="icons-list">
+								<li><a href="#" data-action="collapse"></a></li>
+							</ul>
+						</div>
+
+						<div class="category-content">
+							<form action="#">
+								<div class="has-feedback has-feedback-left">
+									<input type="search" class="form-control" placeholder="Search">
+									<div class="form-control-feedback">
+										<i class="icon-search4 text-size-base text-muted"></i>
+									</div>
+								</div>
+							</form>
+						</div> -->
+					</div>
+					<!-- /sidebar search -->
+
+					<!-- Sub navigation -->
+					<!-- <div class="sidebar-category">
+						<div class="category-title">
+							<span>Navigation</span>
+							<ul class="icons-list">
+								<li><a href="#" data-action="collapse"></a></li>
+							</ul>
+						</div>
+
+						<div class="category-content no-padding">
+							<ul class="navigation navigation-alt navigation-accordion">
+								<li class="navigation-header">Category title</li>
+								<li><a href="#"><i class="icon-googleplus5"></i> Link</a></li>
+								<li><a href="#"><i class="icon-googleplus5"></i> Another link</a></li>
+								<li><a href="#"><i class="icon-portfolio"></i> Link with label <span class="label bg-success-400">Online</span></a></li>
+								<li class="navigation-divider"></li>
+								<li>
+									<a href="#"><i class="icon-cog3"></i> Menu levels</a>
+									<ul>
+										<li><a href="#"><i class="icon-IE"></i> Second level</a></li>
+										<li><a href="#"><i class="icon-firefox"></i> Second level with child</a>
+											<ul>
+												<li><a href="#"><i class="icon-android"></i> Third level</a></li>
+												<li><a href="#"><i class="icon-apple2"></i> Third level with child</a>
+													<ul>
+														<li><a href="#"><i class="icon-html5"></i> Fourth level</a></li>
+														<li><a href="#"><i class="icon-css3"></i> Fourth level</a></li>
+													</ul>
+												</li>
+
+												<li><a href="#"><i class="icon-windows"></i> Third level</a></li>
+											</ul>
+										</li>
+										<li><a href="#"><i class="icon-chrome"></i> Second level</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div> -->
+					<!-- /sub navigation -->
+
+
+					<!-- Form sample -->
+					<!-- <div class="sidebar-category">
+						<div class="category-title">
+							<span>Form example</span>
+							<ul class="icons-list">
+								<li><a href="#" data-action="collapse"></a></li>
+							</ul>
+						</div>
+
+						<form action="#" class="category-content">
+							<div class="form-group">
+								<label>Your name:</label>
+								<input type="text" class="form-control" placeholder="Username">
+							</div>
+
+							<div class="form-group">
+								<label>Your password:</label>
+								<input type="password" class="form-control" placeholder="Password">
+							</div>
+
+							<div class="form-group">
+								<label>Your message:</label>
+								<textarea rows="3" cols="3" class="form-control" placeholder="Default textarea"></textarea>
+							</div>
+
+							<div class="row">
+								<div class="col-xs-6">
+									<button type="reset" class="btn btn-danger btn-block">Reset</button>
+								</div>
+
+								<div class="col-xs-6">
+									<button type="submit" class="btn btn-info btn-block">Submit</button>
+								</div>
+							</div>
+						</form>
+
+					</div> -->
+					<!-- /form sample -->
+				</div>
+			</div>
+			<!-- /opposite sidebar -->
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+	<!-- Core JS files -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-110690650-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-110690650-1');
+</script>	
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VCYLNREJF5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-VCYLNREJF5');
+</script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/loaders/pace.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/core/libraries/jquery.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/core/libraries/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/loaders/blockui.min.js"></script>
+	<script src="https://tickethub.ng/assets/app/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://tickethub.ng/assets/app/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+    <script src="https://tickethub.ng/assets/app/plugins/select2/select2.full.min.js"></script>
+
+    <script type="text/javascript">
+    	function ngn(str){
+	        str += '';
+	        x = str.split('.');
+	        x1 = x[0];
+	        x2 = x.length > 1 ? '.' + x[1] : '';
+	        var rgx = /(\d+)(\d{3})/;
+	        while (rgx.test(x1)) {
+	            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	        }
+	        return '₦'+x1 + x2;
+	    }
+    </script>
+	<!-- /core JS files -->
+	<!-- Other JS and page js goes here -->
+
+	<!-- Upload JS --> 
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/uploaders/fileinput/plugins/purify.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/uploaders/fileinput/plugins/sortable.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/uploaders/fileinput/fileinput.min.js"></script>
+	<!-- /Upload JS -->
+	<!-- WYSISWYG -->
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/forms/styling/uniform.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/editors/wysihtml5/wysihtml5.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/editors/wysihtml5/toolbar.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/editors/wysihtml5/parsers.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/editors/wysihtml5/locales/bootstrap-wysihtml5.ua-UA.js"></script>
+	<!-- /WYSISWYG-->
+
+	<!-- anytine date picker -->
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/ui/moment/moment.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/pickers/daterangepicker.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/pickers/anytime.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/pickers/pickadate/picker.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/pickers/pickadate/picker.date.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/pickers/pickadate/picker.time.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/pickers/pickadate/legacy.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/forms/validation/validate.min.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/forms/styling/switchery.min.js"></script>
+	<!-- /Anytime -->
+	<!-- Theme JS files -->
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/core/app.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/pages/picker_date.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/pages/uploader_bootstrap.js"></script>
+	<script type="text/javascript" src="https://tickethub.ng/assets/app/js/pages/editor_wysihtml5.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC5lFpKS8KPjHWgv1QGa0qURIoMoZfTVqw&libraries=places"></script>
+
+	<script type="text/javascript">
+		// Let the Jquery Begin.... Mwahahaha
+		// Switchery toggles
+	    var elems = Array.prototype.slice.call(document.querySelectorAll('.switchery'));
+	    elems.forEach(function(html) {
+	        var switchery = new Switchery(html);
+	    });
+		initit();
+		function initit(){
+		    // Initialize Validator
+		    var validator = $(".create_event").validate({
+		        ignore: 'input[type=hidden]', // ignore hidden fields
+		        errorClass: 'validation-error-label',
+		        successClass: 'validation-valid-label',
+		        highlight: function(element, errorClass) {
+		            $(element).removeClass(errorClass);
+		        },
+		        unhighlight: function(element, errorClass) {
+		            $(element).removeClass(errorClass);
+		        },
+		        // Different components require proper error label placement
+		        errorPlacement: function(error, element) {
+		            // Styled checkboxes, radios, bootstrap switch
+		            if (element.parents('div').hasClass("checker") || element.parents('div').hasClass("choice") || element.parent().hasClass('bootstrap-switch-container') ) {
+		                if(element.parents('label').hasClass('checkbox-inline') || element.parents('label').hasClass('radio-inline')) {
+		                    error.appendTo( element.parent().parent().parent().parent() );
+		                }
+		                 else {
+		                    error.appendTo( element.parent().parent().parent().parent().parent() );
+		                }
+		            }
+		            // Unstyled checkboxes, radios
+		            else if (element.parents('div').hasClass('checkbox') || element.parents('div').hasClass('radio')) {
+		                error.appendTo( element.parent().parent().parent() );
+		            }
+		            // Input with icons and Select2
+		            else if (element.parents('div').hasClass('has-feedback') || element.hasClass('select2-hidden-accessible')) {
+		                // error.appendTo(element.parent());
+		                // element.parent().parent().addClass('has-warning');
+		            }
+		            // Inline checkboxes, radios
+		            else if (element.parents('label').hasClass('checkbox-inline') || element.parents('label').hasClass('radio-inline')) {
+		                error.appendTo( element.parent().parent() );
+		            }
+		            // Input group, styled file input
+		            else if (element.parent().hasClass('uploader') || element.parents().hasClass('input-group')) {
+		                error.appendTo( element.parent().parent() );
+		            }
+		            else {
+		                error.insertAfter(element);
+		            }
+		        },
+		        validClass: "validation-valid-label",
+		        success: function(label) {
+		            label.addClass("validation-valid-label").text("Success.")
+		        },
+		        rules: {
+                    event_title: {minlength:3}, 
+                    event_address: {minlength:3}, 
+                    event_location:{minlength:3}, 
+                    event_description: {minlength:30}},
+		            messages: {thn_terms: {required: "Accept our terms and condition to continue"}
+		        }
+		    });
+		    $('.ticket_name, .ticket_quantity, .ticket_price').on('keyup', function(){
+		    	element = $(this);
+		    	if ($(this).val() != '') {
+		    		element.parent().parent().removeClass('has-warning');
+		    	} else {
+		    		element.parent().parent().addClass('has-warning');
+		    	}
+		    });
+
+			$(".event_category, .fee_settings").select2({
+	            placeholder: '--- Select a Category ---',
+	            allowClear: false
+	        });
+			pricing_percent = eval("3.5");
+			pricing_comm = eval("200");
+			$('input[type=radio][name=event_privacy]').change(function() {
+		        if (this.value == 'public') {
+		            $('.evt_private').fadeOut();
+		            $('.evt_public').fadeIn();
+		        }
+		        else if (this.value == 'private') {
+		            $('.evt_public').fadeOut();
+		            $('.evt_private').fadeIn();
+		        }
+		    });
+			$('.evt_set_online').click(function(){
+				$(this).parent().fadeOut();
+				$('.event_location').find('label').html('Platform Name');
+				$('.event_location').find('input').attr('placeholder','Ex. Skype, Webninar etc');
+				$('.event_location').find('.evt_set_location').parent().fadeIn();
+				$('.event_address').find('label').html('Website Link/URL');
+				$('.event_address').find('input').attr('placeholder','http://www.example.com');
+				$('.event_type').val('online');
+			});
+
+			$('.evt_set_location').click(function(){
+				$(this).parent().fadeOut();
+				$('.event_location').find('label').html('Venue Name');
+				$('.event_location').find('input').attr('placeholder','Where will your event happen?');
+				$('.event_location').find('.evt_set_online').parent().fadeIn();
+				$('.event_address').find('label').html('Venue Address');
+				$('.event_address').find('input').attr('placeholder','Set a venue address for your event');
+				$('.event_type').val('physical');
+			});
+
+			$('.asetting_icon').click(function(){
+				thisone = $(this).attr('href');
+				$(thisone).collapse('toggle');
+				$('.ticket_table').find('.panel-collapse.collapse.in').collapse('toggle');
+			});
+
+			$('.del_ticket').click(function(){
+				dticket = $(this).closest('.aticket');
+				swal({   
+	                title: "Are you sure?",   
+	                text: "You are about to delete this ticket. This action is irreversible!",   
+	                type: "info",   
+	                showCancelButton: true,   
+	                confirmButtonColor: "#46d9ac",   
+	                confirmButtonText: "Yes, Delete it!",   
+	                cancelButtonText: "Cancel"
+	            }, 
+                function(isConfirm){   
+	                if (isConfirm) dticket.fadeOut().remove();
+	                if($('.ticket_table tbody:last').length < 1) $('.ticket_table').fadeOut();
+	            });
+			});
+			// A few minor automations
+			$('.ticket_name').on('keyup', function(){
+				tname = $(this).val();
+				if (tname == '') tname = 'Ticket Name';
+				dticket = $(this).closest('.aticket');
+				dticket.find('.display_ticket_name').html(tname);
+			});
+			$('.ticket_price').on('keyup', function(){
+				tprice = $(this).val();
+				if (tprice == '') tprice = '0';
+				dticket = $(this).closest('.aticket');
+				if (tprice > 0) {
+					thn_fee = eval(tprice * pricing_percent / 100);
+					thn_fee = eval(thn_fee + pricing_comm).toFixed(2);
+					buyer_fee = eval(tprice).toFixed(2);
+					if(dticket.find('.ticket_fees').val() == 'pass') buyer_fee = (eval(tprice) + eval(thn_fee)).toFixed(2);
+					dticket.find('.thn_fee').html(thn_fee);
+					dticket.find('.buyer_fee').html(buyer_fee);
+				}
+			});
+
+			$('.ticket_fees').on('change', function(){
+				dticket = $(this).closest('.aticket');
+				tprice = dticket.find('.ticket_price').val();
+				if (tprice == '') tprice = '0';
+				if (tprice > 0) {
+					thn_fee = eval(tprice * pricing_percent / 100);
+					thn_fee = eval(thn_fee + pricing_comm).toFixed(2);
+					buyer_fee = eval(tprice).toFixed(2);
+					if(dticket.find('.ticket_fees').val() == 'pass') buyer_fee = (eval(tprice) + eval(thn_fee)).toFixed(2);
+					dticket.find('.thn_fee').html(thn_fee);
+					dticket.find('.buyer_fee').html(buyer_fee);
+				}
+			});
+		}
+
+		// $('.create_event').submit(function(e){
+		// 	e.preventDefault();
+		// 	if($('.ticket_table tbody:last').length < 1){
+		// 		swal({   
+	 //                title: "No tickets?",   
+	 //                text: "Your event has no tickets, so a free ticket with unlimited quantities available, would be created by default",   
+	 //                type: "info",   
+	 //                showCancelButton: true,   
+	 //                confirmButtonColor: "#1189ff",   
+	 //                confirmButtonText: "Yes, Create it!",   
+	 //                cancelButtonText: "No! Cancel"
+	 //            }, function(isConfirm){   
+	 //            	$('.create_event').submit();
+	 //            });
+		// 	} else {
+		// 		$('.create_event').submit();
+		// 	}
+		// });
+
+		$('.ticket_add').click(function(){
+			tc_type = $(this).attr('data-ticket-type');
+			new_id = ($('.ticket_table tbody:last').length) ? ($('.ticket_table tbody:last').attr('data-id') * 1) + 1 : 0;
+			if (new_id == '0') $('.ticket_table').fadeIn();
+			switch(tc_type){
+				case 'free':
+					newticket = '<tbody class="aticket" data-id="'+new_id+'"><tr><td><div class="form-group has-feedback has-feedback-left" style="margin-bottom: 0;"><input type="text" style="min-width: 130px;" name="ticket_name[]" class="form-control ticket_name" required="" placeholder="Ex. Early Bird, Regular"><div class="form-control-feedback"><i class="icon-pencil6"></i></div></div></td><td><div class="form-group has-feedback has-feedback-left" style="margin-bottom: 0;"><input type="number" min="1" style="min-width: 100px;" name="ticket_quantity[]" class="form-control ticket_quantity" required="" placeholder="Ex. 100"><div class="form-control-feedback"><i class="icon-stack"></i></div></div></td><td><h5>Free Ticket</h5><input type="hidden" name="ticket_price[]" value="0"><input type="hidden" name="ticket_type[]" value="free"></td><td><a data-toggle="collapse" href="#collapse-group'+new_id+'" class="asetting_icon btn border-warning text-warning-600 btn-flat btn-icon"><i class="icon-gear"></i></a> <a class="btn border-warning text-warning-600 btn-flat btn-icon del_ticket"><i class="icon-trash"></i></a></td></tr><tr><td colspan="4" style="border: 0; padding: 0;"><div id="collapse-group'+new_id+'" class="panel-collapse collapse"><div class="panel-body"><h6>Settings for <span class="display_ticket_name">Ticket Name</span></h6><div class="col-md-6"><label class="control-label">Ticket Description:</label><textarea rows="5" cols="5" name="ticket_description[]" class="form-control ticket_description" name="ticket_description" placeholder="You can tell your attendees more about this ticket type"></textarea><input type="hidden" name="ticket_fees[]" value=""><input type="checkbox" name="ticket_show[]" value="yes"><span>Show ticket description on event page</span></div><div class="col-md-6"><label class="control-label">Maximum Ticket(s) per User:</label><input type="number" min="1" name="ticket_max[]" class="form-control ticket_max" placeholder="1 (default)"></div></div></div></td></tr></tbody>';
+				break;
+				case 'paid':
+					newticket = '<tbody class="aticket" data-id="'+new_id+'"><tr><td><div class="form-group has-feedback has-feedback-left" style="margin-bottom: 0;"><input type="text" style="min-width: 130px;" name="ticket_name[]" class="form-control ticket_name" required="" placeholder="Ex. Early Bird, Regular"><div class="form-control-feedback"><i class="icon-pencil6"></i></div></div></td><td><div class="form-group has-feedback has-feedback-left" style="margin-bottom: 0;"><input type="number" style="min-width: 100px;" name="ticket_quantity[]" class="form-control ticket_quantity" required="" placeholder="Ex. 100"><div class="form-control-feedback"><i class="icon-stack"></i></div></div></td><td><div class="form-group has-feedback has-feedback-left" style="margin-bottom: 0;"><input type="number" min="0" style="min-width: 100px;" name="ticket_price[]" class="form-control ticket_price" required="" placeholder="0"><input type="hidden" name="ticket_type[]" value="paid"><div class="form-control-feedback">₦</div></div></td><td><a data-toggle="collapse" href="#collapse-group'+new_id+'" class="asetting_icon btn border-warning text-warning-600 btn-flat btn-icon"><i class="icon-gear"></i></a> <a class="btn border-warning text-warning-600 btn-flat btn-icon del_ticket"><i class="icon-trash"></i></a></td></tr><tr><td colspan="4" style="border: 0; padding: 0;"><div id="collapse-group'+new_id+'" class="panel-collapse collapse"><div class="panel-body"><h6>Settings for <span class="display_ticket_name">Ticket Name</span></h6><div class="col-md-6"><label class="control-label">Ticket Description:</label><textarea rows="5" cols="5" name="ticket_description[]" class="form-control ticket_description" placeholder="You can tell your attendees more about this ticket type"></textarea><input type="checkbox" class="ticket_show" name="ticket_show[]" value="yes"><span>Show ticket description on event page</span></div><div class="col-md-6"><label class="control-label">Fees: (Our Fee: ₦<span class="thn_fee">0</span> and Buyer Pays: ₦<span class="buyer_fee">0</span>)</label><select class="form-control ticket_fees" name="ticket_fees[]"><option value="">Choose Setting</option><option value="pass">Pass Fees On</option><option value="absorb">Absorb Fees</option></select><br><label class="control-label">Maximum Ticket(s) per User:</label><input type="number" min="1" name="ticket_max[]" class="form-control ticket_max" placeholder="1 (default)"></div></div></div></td></tr></tbody>';
+				break;
+				case 'donate':
+					newticket = '<tbody class="aticket" data-id="'+new_id+'"><tr><td><div class="form-group has-feedback has-feedback-left" style="margin-bottom: 0;"><input type="text" style="min-width: 130px;" name="ticket_name[]" class="form-control ticket_name" required="" placeholder="Ex. Donation"><div class="form-control-feedback"><i class="icon-pencil6"></i></div></div></td><td><div class="form-group has-feedback has-feedback-left" style="margin-bottom: 0;"><input type="number" style="min-width: 100px;" name="ticket_quantity[]" class="form-control ticket_quantity" required="" placeholder="0 (Unlimited)"><div class="form-control-feedback"><i class="icon-stack"></i></div></div></td><td><h5>Donation</h5><input type="hidden" name="ticket_price[]" value="0"><input type="hidden" name="ticket_type[]" value="donate"></td><td><a data-toggle="collapse" href="#collapse-group'+new_id+'" class="asetting_icon btn border-warning text-warning-600 btn-flat btn-icon"><i class="icon-gear"></i></a> <a class="btn border-warning text-warning-600 btn-flat btn-icon del_ticket"><i class="icon-trash"></i></a></td></tr><tr><td colspan="4" style="border: 0; padding: 0;"><div id="collapse-group'+new_id+'" class="panel-collapse collapse"><div class="panel-body"><h6>Settings for Ticket Name</h6><div class="col-md-6"><label class="control-label">Ticket Description:</label><textarea rows="5" cols="5" name="ticket_description[]" class="form-control ticket_description" placeholder="You can tell your attendees more about this ticket type"></textarea><input type="checkbox" name="ticket_show[]" value="yes"><span>Show ticket description on event page</span></div><div class="col-md-6"><label class="control-label">Fees: (Our Fee: 3.5% + N200)</label><select class="form-control ticket_fees" name="ticket_fees[]"><option value="">Choose Setting</option><option value="pass">Pass Fees On</option><option value="absorb">Absorb Fees</option></select><br><label class="control-label">Maximum Ticket(s) per User:</label><input type="number" min="1" name="ticket_max[]" class="form-control ticket_max" placeholder="1 (default)"></div></div></div></td></tr></tbody>';
+				break;
+			};
+			$('.ticket_table').append(newticket);
+			initit();
+		});
+
+	</script>
+	<script>
+		$(document).ready(function () {
+		   google.maps.event.addDomListener(window, 'load', initialize);
+		});
+		function initialize() {
+		  //  var input = document.getElementById('event_address');
+		  //  var autocomplete = new google.maps.places.Autocomplete(input);
+		}
+	</script>
+</body>
+</html>
+

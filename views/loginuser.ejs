@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+<body>
+    <!-- Login -->
+    <div class="tab-content" id="tab1" style="display: none;">
+        <form method="post" class="login" action="/views/loginuser">
+            <p class="form-row form-row-wide">
+                <label for="">Email Address:<i class="im im-icon-Male"></i><input type="email" class="input-text" name="eventPltUserEmail" value=""/></label>
+            </p>
+            <p class="form-row form-row-wide">
+                <label for="">Password:<i class="im im-icon-Lock-2"></i><input type="password" class="input-text" name="eventPltUserPassword" value=""/></label>
+            </p>
+            <div class="form-row">
+                <input type="submit" class="button border margin-top-5" value="Login" />
+                <!-- <div class="checkboxes margin-top-10">
+                    <input id="remember-me" type="checkbox" name="check">
+                    <label for="remember-me">Remember Me</label>
+                </div> -->
+            </div>
+        </form>
+    </div>
+</body>
+</html>

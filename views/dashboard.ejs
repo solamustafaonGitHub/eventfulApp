@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Overview Dashboard - Eventful.ng</title>
+    <meta name="application-name" content="Eventful.ng"/>
+    <meta name="msapplication-TileColor" content="#FF5A19" />
+    <meta name="msapplication-TileImage" content="/images/eventfulFavicon_128by128.png"/>
+    <meta name="msapplication-square70x70logo" content="/images/eventfulFavicon_128by128.png"/>
+    <meta name="msapplication-square150x150logo" content="/images/eventfulFavicon_128by128.png"/>
+    <meta name="msapplication-wide310x150logo" content="/images/eventfulFavicon_128by128.png"/>
+    <meta name="msapplication-square310x310logo" content="/images/eventfulFavicon_128by128.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/images/eventfulFavicon_196by196.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/eventfulFavicon_196by196.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/eventfulFavicon_196by196.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/eventfulFavicon_196by196.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/eventfulFavicon_196by196.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/images/eventfulFavicon_196by196.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/eventfulFavicon_196by196.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/eventfulFavicon_196by196.png"/>
+    <link rel="icon" type="image/png" href="/images/eventfulFavicon_196by196.png" sizes="196x196"/>
+    <link rel="icon" type="image/png" href="/images/eventfulFavicon_96by96.png" sizes="96x96"/>
+    <link rel="icon" type="image/png" href="/images/eventfulFavicon_128by128.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="/images/eventfulFavicon_32by32.png" sizes="16x16"/>
+    <link rel="icon" type="image/png" href="/images/eventfulFavicon_128by128.png" sizes="128x128"/>
+    <link rel="manifest" href="/images/eventfulFavicon_128by128.png">
+    <meta name="theme-color" content="#46D9AC">
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css"/>
+    <!-- CSS
+================================================== -->
+    <link href="https://tickethub.ng/assets/app/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="https://tickethub.ng/assets/app/css/icons/fontawesome/styles.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://tickethub.ng/assets/app/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="https://tickethub.ng/assets/app/css/core.css" rel="stylesheet" type="text/css"/>
+    <link href="https://tickethub.ng/assets/app/css/components.css" rel="stylesheet" type="text/css"/>
+    <link href="https://tickethub.ng/assets/app/css/colors.css" rel="stylesheet" type="text/css" />
+    <link href="https://tickethub.ng/assets/app/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css"/>
+    <link href="https://tickethub.ng/assets/app/plugins/select2/select2.min.css" rel="stylesheet" />
+
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js"  async=""></script>
+   
+   <script>
+      var OneSignal = window.OneSignal || [];
+      OneSignal.push(function () {
+        OneSignal.init({
+          appId: "f2562713-6cad-44d3-a2c2-909c9299a8f8",
+        });
+      });
+    </script>
+
+    <!-- /global stylesheets -->
+    <!-- A few select2 styling hacks -->
+    <style type="text/css">
+      /* Assign min-width to container */
+      .select2-container {
+        min-width: 200px;
+      }
+      .select2-container--default
+        .select2-selection--single
+        .select2-selection__arrow
+        b {
+        border-color: #000 transparent transparent transparent;
+        top: 60%;
+      }
+      .select2-selection--single .select2-selection__arrow:after {
+        top: 50%;
+        right: 12px;
+        margin-top: -4px;
+      }
+      .select2-selection--single .select2-selection__clear {
+        margin-top: 4px;
+      }
+      .select2-container--default
+        .select2-selection--single
+        .select2-selection__arrow {
+        height: 26px;
+        position: absolute;
+        top: 1px;
+        right: 1px;
+        width: 20px;
+      }
+      .select2-search input {
+        height: 30px !important;
+        border: 2px solid #e5e6e7;
+      }
+      .select2-container-multi .select2-choices {
+        height: auto !important;
+        height: 1%;
+        border: 2px solid #e5e6e7;
+      }
+      .select2-container--default
+        .select2-selection--single
+        .select2-selection__rendered {
+        line-height: 23px;
+      }
+      .select2-container .select2-selection--single {
+        height: 36px;
+      }
+      .btn-thn {
+        min-width: 120px !important;
+      }
+    </style>
+    <!-- Other CSS and page css goes here -->
+    <!-- /theme JS files -->
+    <style type="text/css">
+      #enabled_waitlist {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body class="sidebar-opposite-visible">
+    <!-- Main navbar -->
+    <div class="navbar navbar-default navbar-fixed-top header-highlight">
+      <div class="navbar-header">
+        <a class="text-center" href="/"><img src="/images/eventfulLogo_32by32.png" style="width: 146px; height: 46px; padding-left: 6px; margin: 5px" alt=""/></a>
+        <ul class="nav navbar-nav visible-xs-block">
+          <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+          <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul class="nav navbar-nav">
+          <li><a class="sidebar-control sidebar-main-toggle hidden-xs"><i class="icon-paragraph-justify3"></i></a></li>
+          <li><a href="/">Main Site</a></li>
+          <li><a class="sidebar-control sidebar-opposite-toggle hidden-xs"><i class="icon-indent-decrease2"></i></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown dropdown-user"><a class="dropdown-toggle" data-toggle="dropdown">
+              <img src="/images/userAvatar.png" class="img-circle img-sm" alt="My profile Picture"/><span></span><i class="caret"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
+              <li><a href="#"><i class="icon-coins"></i> My balance (₦0.00)</a></li>
+              <li class="divider"></li>
+              <li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>
+              <li><a href="#"><i class="icon-switch2"></i> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="hidden-xs" style="height: 50px; width: 100%">&nbsp;</div>
+
+    <!-- /main navbar -->
+    <div class="page-container">
+      <!-- Page content -->
+      <div class="page-content">
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main sidebar-fixed">
+          <div class="sidebar-content">
+            <!-- User menu -->
+            <div class="sidebar-user">
+              <div class="category-content">
+                <div class="media">
+                  <a href="#" class="media-left"><img src="/images/userAvatar.png" class="img-circle img-sm" alt="My profile Picture"/></a>
+                  <div class="media-body">
+                    <span class="media-heading text-semibold"></span>
+                    <div class="text-size-mini text-muted">
+                      <i class="icon-envelop3 text-size-small"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /user menu -->
+
+            <!-- Main navigation -->
+            <div class="sidebar-category sidebar-category-visible">
+              <div class="category-content no-padding">
+                <ul class="navigation navigation-main navigation-accordion">
+                  <!-- Main -->
+                  <li class="navigation-header"><span>Menu</span><i class="icon-menu" title="Menu pages"></i></li>
+                  <li class="active"><a href="/views/dashboard"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                  <li><a href="/views/registerevents"><i class="icon-ticket"></i><span>Create New Event</span></a></li>
+                  <li><a href="#"><i class="icon-stack"></i> <span>My Events</span></a>
+                    <ul>
+                      <li><a href="#">Manage Events</a></li>
+                      <li><a href="#">Sales Report</a></li>
+                      <li><a href="#">Ticket Report</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a href="#"><i class="icon-user"></i> <span>My Account</span></a>
+                    <ul>
+                      <li><a href="#">My Profile</a></li>
+                      <li><a href="#">Change Password</a></li>
+                    </ul>
+                  </li>
+                  <!-- /main -->
+                  <li><a href="/views/dashboard/logout"><i class="icon-key"></i> Logout</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- /main sidebar -->
+        <!-- Main content -->
+        <div class="content-wrapper">
+          <!-- Content area -->
+          <div class="content">
+            <!-- Blog post -->
+
+            <div class="timeline-row">
+              <div class="panel panel-body border-top-primary clearfix">
+                <div class="row clearfix">
+                  <div class="col-md-4">
+                    <h3 class="text-semibold">
+                      Overrall Statistics
+                      <span style="display: none; opacity: 0"></span>
+                    </h3>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <a href="#">
+                    <div class="col-md-3">
+                      <div class="panel bg-teal-400" style="position: static; zoom: 1">
+                        <div class="panel-body">
+                          <h3 class="no-margin">0</h3>
+
+                          Total Event(s)
+                          <div class="text-muted text-size-small"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="#">
+                    <div class="col-md-3">
+                      <div class="panel bg-pink-400" style="position: static; zoom: 1">
+                        <div class="panel-body">
+                          <h3 class="no-margin">₦0.00</h3>
+
+                          Total Ticket Sold
+
+                          <div class="text-muted text-size-small"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="#">
+                    <div class="col-md-3">
+                      <div class="panel bg-success-400" style="position: static; zoom: 1">
+                        <div class="panel-body">
+                          <h3 class="no-margin">₦0.00</h3>
+
+                          Total Cash Out
+                          <div class="text-muted text-size-small"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <a href="#">
+                    <div class="col-md-3">
+                      <div class="panel bg-blue-400" style="position: static; zoom: 1">
+                        <div class="panel-body">
+                          <h3 class="no-margin">₦0.00</h3>
+
+                          Current Balance
+                          <div class="text-muted text-size-small"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <!-- panel-body -->
+            </div>
+
+            <div class="timeline-row">
+              <div class="panel panel-body border-top-primary clearfix">
+                <h3 class="text-semibold">Most Recent Ticket Sold</h3>
+
+                <div class="table-responsive">
+                  <table class="table datatable-button-html5-basic">
+                    <thead>
+                      <tr>
+                        <th>Event Name</th>
+                        <th>Ticket Name</th>
+                        <th>Amount Earned</th>
+                        <th>Ticket Holder Details</th>
+                        <th>Date Purchased</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+                <!-- table-responsive -->
+              </div>
+
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="text-center">
+                    <div class="pagination-container margin-top-20 margin-bottom-40"></div>
+                  </div>
+                </div>
+              </div>
+              <br />
+            </div>
+
+            <!-- Footer -->
+            <div class="footer text-muted">&copy; 2024. <a href="#">Eventful.ng</a></div>
+            <!-- /footer -->
+          </div>
+
+          <!-- /content area -->
+        </div>
+        <!-- /main content -->
+        <!-- Opposite sidebar -->
+
+        <div class="sidebar sidebar-opposite sidebar-default sidebar-fixed hidden-sm">
+          <div class="sidebar-content" style="background: url('#') center no-repeat;">
+            <!-- <img src="" style="width: 100%;"> -->
+
+            <!-- Sidebar search -->
+            <div class="sidebar-category">
+              <!-- <div class="category-title">
+							<span>Search</span>
+							<ul class="icons-list">
+								<li><a href="#" data-action="collapse"></a></li>
+							</ul>
+						</div>
+
+						<div class="category-content">
+							<form action="#">
+								<div class="has-feedback has-feedback-left">
+									<input type="search" class="form-control" placeholder="Search">
+									<div class="form-control-feedback">
+										<i class="icon-search4 text-size-base text-muted"></i>
+									</div>
+								</div>
+							</form>
+						</div> -->
+            </div>
+
+            <!-- /sidebar search -->
+            <!-- Sub navigation -->
+            <!-- <div class="sidebar-category">
+
+						<div class="category-title">
+							<span>Navigation</span>
+							<ul class="icons-list">
+								<li><a href="#" data-action="collapse"></a></li>
+							</ul>
+						</div>
+
+						<div class="category-content no-padding">
+							<ul class="navigation navigation-alt navigation-accordion">
+								<li class="navigation-header">Category title</li>
+								<li><a href="#"><i class="icon-googleplus5"></i> Link</a></li>
+								<li><a href="#"><i class="icon-googleplus5"></i> Another link</a></li>
+								<li><a href="#"><i class="icon-portfolio"></i> Link with label <span class="label bg-success-400">Online</span></a></li>
+								<li class="navigation-divider"></li>
+								<li><a href="#"><i class="icon-cog3"></i> Menu levels</a>
+									<ul>
+										<li><a href="#"><i class="icon-IE"></i> Second level</a></li>
+										<li><a href="#"><i class="icon-firefox"></i> Second level with child</a>
+											<ul>
+												<li><a href="#"><i class="icon-android"></i> Third level</a></li>
+												<li><a href="#"><i class="icon-apple2"></i> Third level with child</a>
+													<ul>
+														<li><a href="#"><i class="icon-html5"></i> Fourth level</a></li>
+														<li><a href="#"><i class="icon-css3"></i> Fourth level</a></li>
+													</ul>
+												</li>
+												<li><a href="#"><i class="icon-windows"></i> Third level</a></li>
+											</ul>
+										</li>
+										<li><a href="#"><i class="icon-chrome"></i> Second level</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+					</div> -->
+
+            <!-- /sub navigation -->
+            <!-- Form sample -->
+            <!-- <div class="sidebar-category">
+						<div class="category-title">
+							<span>Form example</span>
+							<ul class="icons-list">
+								<li><a href="#" data-action="collapse"></a></li>
+							</ul>
+						</div>
+
+						<form action="#" class="category-content">
+							<div class="form-group">
+								<label>Your name:</label>
+								<input type="text" class="form-control" placeholder="Username">
+							</div>
+
+							<div class="form-group">
+								<label>Your password:</label>
+								<input type="password" class="form-control" placeholder="Password">
+							</div>
+
+							<div class="form-group">
+								<label>Your message:</label>
+								<textarea rows="3" cols="3" class="form-control" placeholder="Default textarea"></textarea>
+							</div>
+
+							<div class="row">
+								<div class="col-xs-6">
+									<button type="reset" class="btn btn-danger btn-block">Reset</button>
+								</div>
+
+								<div class="col-xs-6">
+									<button type="submit" class="btn btn-info btn-block">Submit</button>
+								</div>
+							</div>
+						</form>
+					</div> -->
+            <!-- /form sample -->
+          </div>
+        </div>
+
+        <!-- /opposite sidebar -->
+      </div>
+
+      <!-- /page content -->
+    </div>
+
+    <!-- /page container -->
+
+    <!-- Core JS files -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src=""></script>
+    
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-110690650-1");
+    </script>
+    <!-- Google tag (gtag.js) -->
+
+    <script async src=""></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-VCYLNREJF5");
+    </script>
+
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/loaders/pace.min.js"></script>
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/core/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/loaders/blockui.min.js"></script>
+    <script src="https://tickethub.ng/assets/app/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="https://tickethub.ng/assets/app/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
+    <script src="https://tickethub.ng/assets/app/plugins/select2/select2.full.min.js"></script>
+
+    <script type="text/javascript">
+      function ngn(str) {
+        str += "";
+        x = str.split(".");
+        x1 = x[0];
+        x2 = x.length > 1 ? "." + x[1] : "";
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+          x1 = x1.replace(rgx, "$1" + "," + "$2");
+        }
+        return "₦" + x1 + x2;
+      }
+    </script>
+
+    <!-- /core JS files -->
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/tables/datatables/datatables.min.js"></script>
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/tables/datatables/extensions/pdfmake/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/tables/datatables/extensions/pdfmake/vfs_fonts.min.js"></script>
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/core/app.js"></script>
+    <script type="text/javascript" src="https://tickethub.ng/assets/app/js/pages/datatables_extension_buttons_html5.js"></script>
+    <script></script>
+  </body>
+</html>

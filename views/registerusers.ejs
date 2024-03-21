@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Basic Page Needs================================================== -->
+<title>Register & Login Users - eventful.ng</title>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="title" content="Find Upcoming Events Around You, Post Events in Nigeria!">
+<meta name="description" content="Register for events! Buy tickets online! Sell tickets online! Post your event and manage attendees. Find upcoming Events in Lagos, Abuja, Port Harcourt, Lekki, Surulere, Ikeja, Benin... anywhere in Nigeria. Visit Eventful.ng">
+<meta name="keywords" content="Post Events, Promote Events, Sponsor Event, Broadcast Event, Events in Nigeria, Sell Tickets, Event Nigeria, Sell Tickets in Nigeria, Fashion Shows, Theatres, Comedy Shows, Clubs and Events in Lagos, Abuja, Port Harcourt and More. Buy and Sell Tickets Online and at our Various Outlets. Promote Your Events with Us. Find Out What's On In Lagos and What's Happening in Nigeria. Create and manage free and paid events. Find events around you, register for free, buy and sell tickets with ease and receive daily payouts. seminar, events, event software, online registration, festival ticketing, free event management, email invitations, event registration software, online event, closest event, buy ticket online, sell tickets, sell tickets online, online event ticketing, ticket management system, nigeria event ticket, payout, nigeria eventRegister for events! Buy tickets online! Sell tickets online! Post your event and manage attendees. Find upcoming Events in Lagos, Abuja, Port Harcourt, Lekki, Surulere, Ikeja, Benin... anywhere in Nigeria. Visit Eventfulhub.ng">
+
+<link rel="icon" type="image/png" href="/public/images/eventfulLogo_196by196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/public/images/eventfulLogo_96by96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/public/images/eventfulLogo_32by32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/public/images/eventfulLogo_16by16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/public/images/eventfulLogo_128by128.png" sizes="128x128" />
+
+<meta name="application-name" content="Eventful.ng"/>
+<meta name="msapplication-TileColor" content="#D1FFBD" />
+
+<meta name="msapplication-TileImage" content="" />
+<meta name="msapplication-square70x70logo" content="" />
+<meta name="msapplication-square150x150logo" content="" />
+<meta name="msapplication-wide310x150logo" content="" />
+<meta name="msapplication-square310x310logo" content="" />
+<link rel="manifest" href="/public/images/eventfulFavicon.png">
+<meta name="theme-color" content="#D1FFBD">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="https://tickethub.ng/assets/front/css/style.css">
+<link rel="stylesheet" href="https://tickethub.ng/assets/front/css/colors/main.css" id="colors">
+<link href="https://tickethub.ng/assets/app/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+<link rel="manifest" href="https://tickethub.ng/manifest.json" />
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+</head>
+<body>
+    	<!-- Register -->
+        <div class="tab-content" id="tab2" style="display: none;">
+            <form method="post" class="login" action="/views/registerusers">
+                <p class="form-row form-row-wide">
+                    <label for="">Username:
+                        <i class="im im-icon-Male"></i>
+                        <input type="text" class="input-text" name="eventPltUsername" value="" />
+                    </label>
+                </p>
+                <p class="form-row form-row-wide">
+                    <label for="">Email Address:
+                        <i class="im im-icon-Mail"></i>
+                        <input type="email" class="input-text" name="eventPltUserEmail" value="" />
+                    </label>
+                </p>
+                <p class="form-row form-row-wide">
+                    <label for="">Password:
+                        <i class="im im-icon-Lock-2"></i>
+                        <input class="input-text" type="password" name="eventPltUserPassword"/>
+                    </label>
+                </p>
+                <p><div class="g-recaptcha" data-sitekey="6Le8Zm4UAAAAAPRpxadTkiaFuD_RKSMxpR2gvJbi"></div></p>
+                <input type="submit" class="button border fw margin-top-10" name="register" value="Sign Up" />
+            </form>
+        </div>
+    
+</body>
+</html>

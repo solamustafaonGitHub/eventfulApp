@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Page Needs================================================== -->
+<title>Sign up Successful</title>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="title" content="Find Upcoming Events Around You, Post Events in Nigeria!">
+<meta name="description" content="Register for events! Buy tickets online! Sell tickets online! Post your event and manage attendees. Find upcoming Events in Lagos, Abuja, Port Harcourt, Lekki, Surulere, Ikeja, Benin... anywhere in Nigeria. Visit Eventful.ng">
+<meta name="keywords" content="Post Events, Promote Events, Sponsor Event, Broadcast Event, Events in Nigeria, Sell Tickets, Event Nigeria, Sell Tickets in Nigeria, Fashion Shows, Theatres, Comedy Shows, Clubs and Events in Lagos, Abuja, Port Harcourt and More. Buy and Sell Tickets Online and at our Various Outlets. Promote Your Events with Us. Find Out What's On In Lagos and What's Happening in Nigeria. Create and manage free and paid events. Find events around you, register for free, buy and sell tickets with ease and receive daily payouts. seminar, events, event software, online registration, festival ticketing, free event management, email invitations, event registration software, online event, closest event, buy ticket online, sell tickets, sell tickets online, online event ticketing, ticket management system, nigeria event ticket, payout, nigeria eventRegister for events! Buy tickets online! Sell tickets online! Post your event and manage attendees. Find upcoming Events in Lagos, Abuja, Port Harcourt, Lekki, Surulere, Ikeja, Benin... anywhere in Nigeria. Visit Eventfulhub.ng">
+
+<link rel="icon" type="image/png" href="/images/eventfulLogo_196by196.png" sizes="196x196" />
+<link rel="icon" type="image/png" href="/images/eventfulLogo_96by96.png" sizes="96x96" />
+<link rel="icon" type="image/png" href="/images/eventfulLogo_32by32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/images/eventfulLogo_16by16.png" sizes="16x16" />
+<link rel="icon" type="image/png" href="/images/eventfulLogo_128by128.png" sizes="128x128" />
+
+<meta name="application-name" content="Eventful.ng"/>
+<meta name="msapplication-TileColor" content="#D1FFBD" />
+
+<meta name="msapplication-TileImage" content="" />
+<meta name="msapplication-square70x70logo" content="" />
+<meta name="msapplication-square150x150logo" content="" />
+<meta name="msapplication-wide310x150logo" content="" />
+<meta name="msapplication-square310x310logo" content="" />
+<link rel="manifest" href="/images/eventfulFavicon.png">
+<meta name="theme-color" content="#D1FFBD">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="https://tickethub.ng/assets/front/css/style.css">
+<link rel="stylesheet" href="https://tickethub.ng/assets/front/css/colors/main.css" id="colors">
+<link href="https://tickethub.ng/assets/app/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+<link rel="manifest" href="https://tickethub.ng/manifest.json" />
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+</head>
+<body>
+    <!-- Header Container
+================================================== -->
+<header id="header-container">
+	<!-- Header -->
+	<div id="header">
+		<div class="container">
+			<!-- Left Side Content -->
+			<div class="left-side">
+				<!-- Logo -->
+				<div id="logo">
+					<a href="/"><img src="/images/eventfulLogo2.png" alt="logo here" class="h-13" style="max-height: 50px;" alt=""></a>
+				</div>
+				<!-- Mobile Navigation -->
+				<div class="mmenu-trigger">
+					<button class="hamburger hamburger--collapse" type="button">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</button>
+				</div>
+				<!-- Main Navigation -->
+				<nav id="navigation" class="style-1">
+					<ul id="responsive">
+						<li><a  href="https://tickethub.ng/listings">Find Events</a></li>
+						<li><a  href="https://tickethub.ng/retrieve">Retrieve Ticket</a></li>
+						<li><a  href="https://tickethub.ng/about">About</a></li>
+						<li><a  href="https://tickethub.ng/contact">Contact</a></li>
+						<li class="hidden-md hidden-sm hidden-lg visible-xs"><a href="https://tickethub.ng/login">Sign In</a></li>
+						<li class="hidden-md hidden-sm hidden-lg visible-xs"><a href="https://tickethub.ng/create">Post Event</a></li>
+					</ul>
+				</nav>
+
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+			</div>
+
+			<!-- Left Side Content / End -->
+			<!-- Right Side Content / End -->
+			<div class="right-side">
+				<div class="header-widget hidden-xs">
+					<a href="#sign-in-dialog" class="sign-in popup-with-zoom-anim button border with-icon">Create Event <i class="sl sl-icon-plus"></i></a>
+				</div>
+
+			<div class="header-widget hidden-md hidden-sm hidden-lg hidden-xs"></div>
+			</div>
+			<!-- Right Side Content / End -->
+
+			<!-- Sign In Popup -->
+			<div id="sign-in-dialog" class="zoom-anim-dialog mfp-hide">
+				<div class="small-dialog-header">
+					<h3>Sign In</h3>
+				</div>
+				<!--Tabs -->
+				<div class="sign-in-form style-1">
+					<ul class="tabs-nav">
+						<li class=""><a href="#tab1">Log In</a></li>
+						<li><a href="#tab2">Register</a></li>
+					</ul>
+				
+                    <div class="tabs-container alt">
+						<!-- Login 'Event User'-->
+						<div class="tab-content" id="tab1" style="display: none;">
+							<form method="post" class="login" action="/views/loginuser">
+								<p class="form-row form-row-wide"><label for="">Email Address:<i class="im im-icon-Male"></i><input type="email" class="input-text" name="eventPltUserEmail" value="" /></label></p>
+								<p class="form-row form-row-wide"><label for="">Password:<i class="im im-icon-Lock-2"></i><input class="input-text" type="password" name="eventPltUserPassword"/></label>
+									<span class="lost_password"><a href="#">Forgot Your Password?</a></span></p>
+								<div class="form-row">
+									<input type="submit" class="button border margin-top-5" value="Login" />
+									<!-- <div class="checkboxes margin-top-10">
+										<input id="remember-me" type="checkbox" name="check">
+										<label for="remember-me">Remember Me</label>
+									</div> -->
+								</div>
+							</form>
+						</div>
+
+	<!-- Register an 'Event User'-->
+	<div class="tab-content" id="tab2" style="display: none;">
+		<form method="post" class="login" action="/views/registerusers">
+			<p class="form-row form-row-wide"><label for="">Username:<i class="im im-icon-Male"></i><input type="text" class="input-text" name="eventPltUsername" value=""/></label></p>
+            <p class="form-row form-row-wide"><label for="">Email Address:<i class="im im-icon-Mail"></i><input type="email" class="input-text" name="eventPltUserEmail" value=""/></label></p>
+            <p class="form-row form-row-wide"><label for="">Password:<i class="im im-icon-Lock-2"></i><input class="input-text" type="password" name="eventPltUserPassword" value=""/></label></p>
+
+			<input type="submit" class="button border fw margin-top-10" value="Sign Up" />
+		</form>
+	</div>
+					</div>
+				</div>
+			</div>
+			<!-- Sign In Popup / End -->
+		</div>
+	</div>
+	<!-- Header / End -->
+</header>
+
+<div class="clearfix"></div>
+
+<!-- Header Container / End --><style type="text/css">
+.main-search-container:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: block;
+    background: linear-gradient(to right,rgba(0,0,0,0.1) 20%,rgba(0,0,0,0.5) 70%,rgba(0,0,0,0) 95%);
+}
+i.like-icon {
+    color: #fff;
+    font-size: 19px;
+    position: absolute;
+    z-index: 101;
+    right: 30px;
+    bottom: 30px;
+    cursor: normal;
+    background-color: rgba(24,24,24,0.4);
+    display: block;
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    transition: all 0.4s;
+}
+.like-icon::before {
+    content: '';
+}
+.like-icon::before, .like-icon::after {
+    font-family: "iconsmind" !important;
+}
+.im-icon-Sharethis::before {
+    content: "\ec4b" !important;
+}
+.share-buttons li a.whatsapp-share {
+    border-color: #25d366;
+    color: #25d366;
+}
+.share-buttons li a.whatsapp-share:hover {
+    background: #25d366;
+    color: #fff;
+}
+.shop.rev_slider .slotholder:after, .home.rev_slider .slotholder:after {
+    opacity: 0 !important;
+}
+.home.rev_slider img {
+	cursor: pointer;
+}
+.star-rating span {
+	color: #6f7881;
+	font-size: 14px;
+}
+.listing-item:before {
+	opacity: 0;
+}
+.center-text {
+    text-align: center;
+}
+</style>
+
+<section class="w-screen bg-white py-8">
+<br><br><br>
+    <div class="flex flex-col items-center justify-center text-center" style="margin-top:40px;">
+            <h2 class="text-4xl font-bold mb-0">You Have Sucessfully Registered on Eventful.ng</h2>
+            <a href="/" class="text-yellow-500 text-2xl mt-4 underline hover:underline block">Click Here To Go Back To The Home Page</a>
+    </div>
+</section>
+
+<a href="#" style="margin-bottom: -65px;" class="flip-banner parallax margin-top-65" data-background="/images/eventfulSlider2.png" data-color="#46d9ac" data-color-opacity="0.85" data-img-width="2500" data-img-height="1666">
+	<div class="flip-banner-content">
+		<h2 class="flip-visible">Find Events Around You... Know What's Happening, When & Where...</h2>
+		<h2 class="flip-hidden">Browse Events <i class="sl sl-icon-arrow-right"></i></h2>
+	</div>
+</a>
+
+<!-- Share Popup -->
+<div id="small-dialog" class="zoom-anim-dialog mfp-hide">
+	<div class="small-dialog-header">
+		<h3>Share</h3>
+	</div>
+	<div class="text-center">
+		<ul class="share-buttons margin-bottom-10">
+			<li><a target="_blank" class="whatsapp-share" href=""><i class="fa fa-whatsapp"></i> Share</a></li> 
+			<li><a target="_blank" class="fb-share" href=""><i class="fa fa-facebook"></i> Post</a></li>
+			<li><a target="_blank" class="twitter-share" href=""><i class="fa fa-twitter"></i> Tweet</a></li>
+		</ul> 
+	</div>
+	<input type="text" class="text_link text-center" value="" onclick="this.select()">
+</div>
+<!-- Share Popup / End -->
+
+<!-- Footer
+================================================== -->
+<div id="footer" class="sticky-footer margin-top-65">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<img class="footer-logo" src="/images/eventfulLogo2.png" style="max-height: 100px" alt="">
+				<br><br>
+				<p>Post events in Nigeria, free and paid events. Find events around you, register for free event, buy tickets, sell tickets online and promote your event in Nigeria.</p>
+			</div>
+
+    <div class="col-md-4 col-sm-6 ">
+				<h4>Helpful Links</h4>
+				<ul class="footer-links">
+					<li><a href="/views/loginuser">Login</a></li>
+					<li><a href="/views/registerusers">Sign Up</a></li>
+					<li><a href="#">Retrieve Ticket</a></li>
+					<li><a href="/views/registerevents">Create Event</a></li>
+					<li><a href="#">Terms</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
+
+				<ul class="footer-links">
+					<li><a href="#">FAQ</a></li>
+					<!-- <li><a href="#">Blog</a></li> -->
+					<li><a href="/views/events">Find Events</a></li>
+					<li><a href="#">About Eventful.ng</a></li>
+					<li><a href="#">Contact Us</a></li>
+				</ul>
+
+				<div class="clearfix"></div>
+	</div>		
+
+			<div class="col-md-3  col-sm-12">
+				<h4>Connect with us</h4>
+				<div class="text-widget">
+					<!-- <span>1 Adekunle Owobiyi Close, Ogba, Ikeja Lagos, Nigeria</span> <br> -->
+					Whatsapp: <span><a href="https://wa.me/2349060384241">+2348174760000</a></span><br>
+					E-Mail:<span> <a href="mailto:hello@eventful.ng">hello@eventful.ng</a> </span><br>
+				</div>
+
+                <ul class="social-icons margin-top-20">
+					<li><a target="_blank" class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+					<li><a target="_blank" class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+					<li><a target="_blank" class="instagram" href="#"><i class="icon-instagram"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 2024 Eventful.ng. All Rights Reserved.</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Footer / End -->
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+</div>
+</body>
+</html>
